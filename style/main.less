@@ -6,6 +6,8 @@ body {
 	color: #FAFAFA;
 	font-family: Segoe UI, Roboto, sans-serif;
 	line-height: 1.15;
+	height: 100dvh;
+	box-sizing: border-box;
 
 	.main_panel {
 		right: 500px;
@@ -61,11 +63,10 @@ body {
 		}
 	}
 	.dropzone {
-		max-width: 200px;
 		width: 100%;
-		height: 200px;
+		height: 100%;
 		padding: 25px;
-		margin-bottom: 16px;
+		box-sizing: border-box;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -87,9 +88,8 @@ body {
 	}
 
 	.dropzone__thumb {
-		width: 100%;
-		height: 100%;
 		border-radius: 10px;
+		max-width: 100%;
 		overflow: hidden;
 		background-size: cover;
 		position: relative;
@@ -101,13 +101,11 @@ body {
 
 	.dropzone__thumblabel::after {
 		content: attr(data-label);
-		position: absolute;
-		bottom: 0;
-		left: 0;
 		width: 100%;
 		padding: 5px 0;
 		font-size: 14px;
 		text-align: center;
+		overflow-wrap: break-word;
 	}
 
 	.open_demo {
@@ -117,7 +115,8 @@ body {
 		height: 100%;
 		box-sizing: border-box;
 		max-width: 210px;
-		height: 50px;
+		min-height: 50px;
+    	height: fit-content;
 		border-radius: 4px;
 		box-shadow: 0 8px 24px 0 rgba(0,0,0,.08),0 44px 32px 0 rgba(0,0,0,.25);
 		background: #3263C7;
@@ -141,7 +140,10 @@ body {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		margin-top: 90px;
+		box-sizing: border-box;
+		height: 100%;
+		width: 100%;
+		padding: 25px;
 	}
 	@keyframes top2down {
 		from{top:-500px;opacity:0;}

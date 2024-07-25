@@ -29,7 +29,9 @@ document.addEventListener("DOMContentLoaded", async function () {
 	fileSelect.type = "file";
 	button_open_demo.className = "open_demo";
 	button_open_demo.textContent = "Open demo from file";
-	button_open_demo.addEventListener("click", () => {
+	button_open_demo.addEventListener("click", (e) => {
+		e.preventDefault();
+		e.stopPropagation();
 		if (!fileSelect.files[0]) {
 			error_open(error, "No file selected");
 			return;
@@ -60,7 +62,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 	document.body.appendChild(main);
 	dropzone.appendChild(fileSelect);
 	main.appendChild(dropzone);
-	main.appendChild(button_open_demo);
+	dropzone.appendChild(button_open_demo);
 	document.body.appendChild(error)
 
 	document.querySelectorAll(".dropzone__input").forEach((inputElement) => {
@@ -83,6 +85,10 @@ document.addEventListener("DOMContentLoaded", async function () {
 
 		["dragleave", "dragend"].forEach((type) => {
 			dropZoneElement.addEventListener(type, (e) => {
+				console.log(e)
+				if(dropZoneElement.contains(e.relatedTarget)) {
+					return;
+				}
 				dropZoneElement.classList.remove("dropzone__over");
 			});
 		});
